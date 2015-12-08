@@ -12,6 +12,6 @@
   2. Make sure that the name of your actual ISO file and the name mentioned in the  packer-template is same 
   3. Change **ssh_name**, **ssh_pass** and **hostname** varible in the packer-template.json file or while running packer provide varibles with **-var "KEY=VALUE"**.  
   4. Run **packer validate packer-template.json** from packer directory.   
-      You should see   
-      Template validated successfully.  
-  5. Now run **"packer build packer-template.json"** if varibles are changes inside the packer-template.json file else  run this **packer build packer-template.json -var "ssh_name=YOUR_SSH_USER" -var "ssh_pass=YOUR_SSH_PASSWORD" -var "hostname=YOUR_HOSTNAME"**.  
+	      You should see     
+	      Template validated successfully.   
+  5. Now run **"packer build packer-template.json"** if varibles are changed inside the packer-template.json file else  run this **packer build packer-template.json -var "ssh_name=YOUR_SSH_USER" -var "ssh_pass=YOUR_SSH_PASSWORD" -var "hostname=YOUR_HOSTNAME"**.  
