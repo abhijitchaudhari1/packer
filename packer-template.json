@@ -1,0 +1,50 @@
+{
+    "variables": {
+        "ssh_name": "abhi",
+        "ssh_pass": "AbhI",
+        "hostname": "packer-demo"
+    },
+
+    "builders": [
+    
+    {
+      "type": "vmware-iso",
+      "iso_url": "ubuntu-14.04.3-server-amd64.iso",
+      "iso_checksum": "9e5fecc94b3925bededed0fdca1bd417",
+      "iso_checksum_type": "md5",
+      "ssh_username": "{{user `ssh_name`}}",
+      "ssh_password": "{{user `ssh_pass`}}",
+      "ssh_wait_timeout": "20m",
+      "http_directory" : "preseeds",
+      "http_port_min" : 9001,
+      "http_port_max" : 9001,
+      "shutdown_command": "echo {{user `ssh_pass`}} | sudo -S shutdown -P now",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz noapic ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/trusty_preseed.cfg ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "hostname={{user `hostname`}} ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "initrd=/install/initrd.gz -- <enter>"
+      ]
+    }
+  ],
+    
+    "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "echo {{user `ssh_pass`}} | sudo -S sh -c 'echo {{user `ssh_name`}} ALL=\\(ALL\\) NOPASSWD: ALL >> /etc/sudoers'"
+        ]
+      },
+    {   
+      "type": "shell",
+      "script": "provision.sh"
+    } 
+      
+      ]
+    }
