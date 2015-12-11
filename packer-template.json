@@ -43,7 +43,7 @@
       },
     {   
       "type": "shell",
-      "script": 
+      "scripts": 
       [
       "provision.sh",
       "cleanup.sh",
