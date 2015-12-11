@@ -45,9 +45,9 @@
       "type": "shell",
       "scripts": 
       [
-      "provision.sh",
-      "cleanup.sh",
-      "zero-disk.sh"
+      "scripts/provision.sh",
+      "scripts/cleanup.sh",
+      "scripts/zero-disk.sh"
       ]
     } 
       
