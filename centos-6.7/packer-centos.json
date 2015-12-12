@@ -44,7 +44,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/vagrant.ks<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 40520,
+      "disk_size": 40520, 
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
@@ -103,5 +103,5 @@
         }
       }
     }
-  ],
+  ]
 }
