@@ -1,9 +1,13 @@
 RELEASE=`rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release)`
 rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-${RELEASE}.noarch.rpm
 yum install -y puppet-agent
+chkconfig puppet on
+service puppet start 
 rpm -ivh https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.10.0-1.el6.x86_64.rpm
-yum install vim vi emacs-nox tree nano createrepo wget  yum-plugin-priorities  -y
+yum install vim vi  tee emacs-nox tree nano createrepo wget  yum-plugin-priorities  libcgroup xz -y
 curl -sSL https://get.docker.com/ | sh
+service docker start
+chkconfig docker on
 usermod -a -G docker vagrant
 echo 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMj
 IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIwojICAgICAgICAg
@@ -55,5 +59,3 @@ enabled=1
 priority=1
 gpgcheck=0
 EOF
-yum clean all 
-yum check-update
