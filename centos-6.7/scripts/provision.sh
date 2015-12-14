@@ -49,7 +49,7 @@ wget -O /usr/local/repo/mailcap-2.1.31-2.el6.noarch.rpm  http://mirror.centos.or
 wget -O /usr/local/repo/numactl-2.0.9-2.el6.x86_64.rpm  http://mirror.centos.org/centos/6/os/x86_64/Packages/numactl-2.0.9-2.el6.x86_64.rpm
 wget http://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.10-1.el6.x86_64.rpm-bundle.tar
 tar -xvf  mysql-5.7.10-1.el6.x86_64.rpm-bundle.tar -C /usr/local/repo/
-rm -rf  mysql-5.7.10-1.el6.i686.rpm-bundle.tar
+rm -rf  mysql-5.7.10-1.el6.x86_64.rpm-bundle.tar
 createrepo /usr/local/repo/
 cat > /etc/yum.repos.d/localrepo.repo << EOF
 [localrepo]
