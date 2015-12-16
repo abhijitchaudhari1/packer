@@ -1,0 +1,87 @@
+{
+  "CallerReference": "string",
+  "Aliases": {
+	"Quantity": 0
+        },
+    "DefaultRootObject": "", 
+     "Origins": {
+            "Items": [
+                {
+                    "OriginPath": "", 
+                    "CustomOriginConfig": {
+                        "OriginProtocolPolicy": "match-viewer", 
+                        "HTTPPort": {{ origins_http_port }}, 
+                        "HTTPSPort": {{ origins_https_port }}
+                    }, 
+                    "Id": "Custom-{{ origins_domain }}", 
+                    "DomainName": "{{ origins_domain }}"
+                }
+            ], 
+            "Quantity": 1
+        },
+    "DefaultCacheBehavior": {
+            "TrustedSigners": {
+                "Enabled": false, 
+                "Quantity": 0
+            }, 
+            "TargetOriginId": "Custom-{{ origins_domain }}", 
+            "ViewerProtocolPolicy": "allow-all", 
+            "ForwardedValues": {
+                "Headers": {
+                    "Quantity": 0
+                }, 
+                "Cookies": {
+                    "Forward": "none"
+                }, 
+                "QueryString": false
+            }, 
+            "MaxTTL": 31536000, 
+            "SmoothStreaming": false, 
+            "DefaultTTL": 86400, 
+            "AllowedMethods": {
+                "Items": [
+                    "HEAD", 
+                    "GET"
+                ], 
+                "CachedMethods": {
+                    "Items": [
+                        "HEAD", 
+                        "GET"
+                    ], 
+                    "Quantity": 2
+                }, 
+                "Quantity": 2
+            }, 
+            "MinTTL": 0
+        },
+    "CacheBehaviors": {
+            "Quantity": 0
+        },
+    "CustomErrorResponses": {
+            "Quantity": 0
+        },
+    "Comment": "your comment",
+       "Logging": {
+            "Bucket": "", 
+            "Prefix": "", 
+            "Enabled": false, 
+            "IncludeCookies": false
+        },
+    "PriceClass": "{{ origins_price_class }}",
+    "Enabled": true,
+    "ViewerCertificate": {
+            "CloudFrontDefaultCertificate": true, 
+            "MinimumProtocolVersion": "SSLv3"
+        },
+    "Restrictions": {
+            "GeoRestriction": {
+                "RestrictionType": "none", 
+                "Quantity": 0
+            }
+        },
+    "WebACLId": ""
+}
+
+
+
+
